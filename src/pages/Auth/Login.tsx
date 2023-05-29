@@ -1,25 +1,26 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import { requests } from "../../utils/requests";
+import { View, Text, TextInput, Button } from "react-native";
 import { styles } from "./styles";
-interface AuthData {
-  authKey: string;
-}
+import { useAppDispatch, useAppSelector } from "../../Reducer";
+import { loginUser, setToken } from "../../Reducer/User";
+import getAuthKey from "../../api/getAuthKey";
 export default function Login() {
-  const [login, setLogin] = React.useState("");
+  const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const data = useAppSelector((state) => state.User);
+  const dispatch = useAppDispatch();
   return (
     <View>
       <Text style={styles.title}>Авторизация</Text>
       <Text style={styles.labelText}>Логин:</Text>
       <TextInput
         style={styles.InputText}
-        onChangeText={setLogin}
+        onChangeText={setUsername}
         placeholder="Логин"
         maxLength={40}
-        value={login}
+        value={username}
       />
-      <Text style={styles.labelText}>Пароль:</Text>
+      -<Text style={styles.labelText}>Пароль:</Text>
       <TextInput
         style={styles.InputText}
         onChangeText={setPassword}
@@ -30,17 +31,9 @@ export default function Login() {
       />
       <Button
         onPress={() => {
-          requests
-            .post<AuthData>("/web/api/login", {
-              username: login,
-              password,
-            })
-            .then((response) => {
-              requests.defaults.headers["authKey"] = response.data.authKey;
-            })
-            .catch((error) => {
-              console.log(error.message);
-            });
+          getAuthKey(username, password).subscribe((res) =>
+            dispatch(setToken(res))
+          );
         }}
         title="Авторизоваться"
         color="#0099FF"

@@ -1,5 +1,21 @@
 import React from "react";
 import { TouchableOpacity, View, StyleSheet } from "react-native";
+interface CancelPreviewButtonProps {
+  onPress: () => void;
+}
+export default function CancelPreviewButton({
+  onPress,
+}: CancelPreviewButtonProps) {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.closeButton}>
+      <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} />
+      <View
+        style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]}
+      />
+    </TouchableOpacity>
+  );
+}
+
 const styles = StyleSheet.create({
   closeButton: {
     position: "absolute",
@@ -20,18 +36,3 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
 });
-interface CancelPreviewButtonProps {
-  onPress: () => void;
-}
-export default function CancelPreviewButton({
-  onPress,
-}: CancelPreviewButtonProps) {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.closeButton}>
-      <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} />
-      <View
-        style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]}
-      />
-    </TouchableOpacity>
-  );
-}

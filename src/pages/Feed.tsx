@@ -1,22 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import axios from 'axios';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import VideoComponent from "../components/VideoComponent";
 
 export default function Feed() {
-
-  return (
-    <View >
-    </View>
-  );
+  return <VideoComponent />;
 }
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 28,
-    textAlign: 'center',
-  },
-  labelText: {
-    fontSize: 16,
-    textAlign: 'left'
-  },
-});

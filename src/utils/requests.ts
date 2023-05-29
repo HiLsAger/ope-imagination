@@ -1,3 +1,4 @@
 import axios from "axios";
+import server from "./server";
 
-export const requests = axios.create({ baseURL: "http://192.168.1.9" });
+export const requests = axios.create({ baseURL: server() });

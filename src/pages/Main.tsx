@@ -5,6 +5,7 @@ import HomeIcon from "../../assets/nav/home.png";
 import ProfileIcon from "../../assets/nav/profile.png";
 import AddIcon from "../../assets/nav/add.png";
 import { Outlet, useNavigate } from "react-router-native";
+import { useEffect } from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -37,6 +38,9 @@ const styles = StyleSheet.create({
 });
 export default function MainPage() {
   const nav = useNavigate();
+  useEffect(() => {
+    nav("feed");
+  }, []);
   return (
     <>
       <View style={styles.container}>

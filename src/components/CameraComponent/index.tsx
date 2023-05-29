@@ -1,14 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  StyleSheet,
-  Dimensions,
-  Text,
-  TextInput,
-  Image,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import {
   requestCameraPermissionsAsync,
   requestMicrophonePermissionsAsync,
@@ -16,11 +7,6 @@ import {
   FlashMode,
   Camera,
 } from "expo-camera";
-import { Video } from "expo-av";
-import axios from "axios";
-
-import RefreshIcon from "../../assets/refresh.png";
-import SaveIcon from "../../assets/save.png";
 import VideoRecordIndicator from "./VideoRecordIndicator";
 import VideoPlayer from "./VideoPlayer";
 import CancelPreviewButton from "./CancelPreviewButton";
@@ -137,7 +123,7 @@ export default function AddContent() {
             onPress={startOrStop}
           />
         )}
-        {isSavePreview && <SetCaptionVideo />}
+        {isSavePreview && <SetCaptionVideo path={videoSource} />}
       </View>
     </SafeAreaView>
   );

@@ -1,5 +1,16 @@
 import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import SaveIcon from "../../../assets/save.png";
+interface SavePreviewButtonProps {
+  onPress: () => void;
+}
+export default function SavePreviewButton({ onPress }: SavePreviewButtonProps) {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.saveButton}>
+      <Image source={SaveIcon} style={{ width: 25, height: 25 }} />
+    </TouchableOpacity>
+  );
+}
+
 const styles = StyleSheet.create({
   saveButton: {
     position: "absolute",
@@ -15,13 +26,3 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
 });
-interface SavePreviewButtonProps {
-  onPress: () => void;
-}
-export default function SavePreviewButton({ onPress }: SavePreviewButtonProps) {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.saveButton}>
-      <Image source={SaveIcon} style={{ width: 25, height: 25 }} />
-    </TouchableOpacity>
-  );
-}

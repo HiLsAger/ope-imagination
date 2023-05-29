@@ -1,4 +1,13 @@
 import { StyleSheet, View, Text } from "react-native";
+export default function VideoRecordIndicator() {
+  return (
+    <View style={styles.recordIndicatorContainer}>
+      <View style={styles.recordDot} />
+      <Text style={styles.recordTitle}>{"Запись..."}</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -118,11 +127,3 @@ const styles = StyleSheet.create({
     color: "#f1f1f1",
   },
 });
-export default function VideoRecordIndicator() {
-  return (
-    <View style={styles.recordIndicatorContainer}>
-      <View style={styles.recordDot} />
-      <Text style={styles.recordTitle}>{"Запись..."}</Text>
-    </View>
-  );
-}

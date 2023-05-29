@@ -1,22 +1,6 @@
 import { StyleSheet, TouchableOpacity, View, Image } from "react-native";
 import RefreshIcon from "../../../assets/refresh.png";
-const styles = StyleSheet.create({
-  control: {
-    position: "absolute",
-    flexDirection: "row",
-    bottom: 80,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  capture: {
-    backgroundColor: "#f5f6f5",
-    height: 50,
-    width: 50,
-    borderRadius: Math.floor(50 / 2),
-    marginHorizontal: 31,
-  },
-});
+
 interface CaptureControlProps {
   ready: boolean;
   onSwitch: () => void;
@@ -41,3 +25,21 @@ export default function CaptureControl({
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  control: {
+    position: "absolute",
+    flexDirection: "row",
+    bottom: 80,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  capture: {
+    backgroundColor: "#f5f6f5",
+    height: 50,
+    width: 50,
+    borderRadius: Math.floor(50 / 2),
+    marginHorizontal: 31,
+  },
+});

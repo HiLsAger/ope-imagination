@@ -5,9 +5,11 @@ import CameraComponent from "../components/CameraComponent";
 import Login from "./Auth/Login";
 import Register from "./Auth/Register";
 import MainPage from "./Main";
+import NotFound from "./NotFound";
 export default function Pages() {
   return (
     <Routes>
+      <Route path="*" element={<NotFound />} />
       <Route path="/" element={<MainPage />}>
         <Route path="auth" element={<Auth />}>
           <Route path="login" element={<Login />} />

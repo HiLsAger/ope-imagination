@@ -2,22 +2,25 @@ import { View, Text, TextInput, Button } from "react-native";
 import { styles } from "./styles";
 import React from "react";
 import { requests } from "../../utils/requests";
+import { setToken } from "../../Reducer/User";
+import { useAppDispatch } from "../../Reducer";
 
 export default function Register() {
-  const [login, setLogin] = React.useState("");
+  const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [name, setName] = React.useState("");
+  const dispatch = useAppDispatch();
   return (
     <View>
       <Text style={styles.title}>Регистрация</Text>
       <Text style={styles.labelText}>Псевдоним:</Text>
       <TextInput
         style={styles.InputText}
-        onChangeText={setLogin}
+        onChangeText={setUsername}
         placeholder="Псевдоним"
         maxLength={40}
-        value={login}
+        value={username}
       />
       <Text style={styles.labelText}>Пароль:</Text>
       <TextInput
@@ -47,14 +50,14 @@ export default function Register() {
       <Button
         onPress={() => {
           requests
-            .post<boolean>("http://192.168.1.9/web/api/registration", {
-              username: login,
+            .post<string>("/register", {
+              username: username,
               password: password,
               email: email,
               name: name,
             })
             .then((response) => {
-              console.log(response.data);
+              dispatch(setToken(response.data));
             })
             .catch((error) => {
               console.log(error.response.data);
